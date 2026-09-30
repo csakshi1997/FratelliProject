@@ -1,0 +1,102 @@
+//
+//  ActionItemsVC.swift
+//  FRATELLI
+//
+//  Created by Sakshi on 23/12/24.
+//
+
+import UIKit
+
+class ActionItemsVC: UIViewController {
+    @IBOutlet var TableVw: UITableView?
+    @IBOutlet var noDataVw: UIView?
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
+
+    var contactsTable = ContactsTable()
+    var contact = [Contact]()
+    var items: [String] = ["Lorem Ipsum (5 Bottles)", "Lorem Ipsum (10 Bottles)","Lorem Ipsum (15 Bottles)", "Lorem Ipsum (5 Bottles)", "Lorem Ipsum (5 Bottles)"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setInitialUI()
+        TableVw?.dataSource = self
+        TableVw?.delegate = self
+        TableVw?.rowHeight = UITableView.automaticDimension
+        TableVw?.estimatedRowHeight = 150
+    }
+    
+    func setInitialUI() {
+        TableVw?.showsVerticalScrollIndicator = false
+        TableVw?.showsHorizontalScrollIndicator = false
+        contact = contactsTable.getContacts()
+//        if contact.isEmpty {
+//            noDataVw?.isHidden = false
+//        } else {
+//            noDataVw?.isHidden = true
+//            TableVw?.reloadData()
+//        }
+    }
+    
+    @IBAction func backAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func skipForNow() {
+        let checkInalert = UIAlertController(
+            title: "Check-Out?",
+            message: "Are you sure you want to skip?",
+            preferredStyle: .alert
+        )
+        self.present(checkInalert, animated: true, completion: nil)
+        checkInalert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: { _ in
+            print("Cancel tapped")
+        }))
+        
+        checkInalert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            
+        }))
+    }
+    
+}
+
+extension ActionItemsVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: ActionItemsCell = tableView.dequeueReusableCell(withIdentifier: "ActionItemsCell", for: indexPath) as! ActionItemsCell
+        cell.orderListLbl?.text = ""
+        for item in items {
+            cell.orderListLbl?.text = (cell.orderListLbl?.text ?? "") + "\(item)\n"
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
+class ActionItemsCell: UITableViewCell {
+    @IBOutlet var nameLbl: UILabel?
+    @IBOutlet var subnameLbl: UILabel?
+    @IBOutlet var addressLbl: UILabel?
+    @IBOutlet var orderListLbl: UILabel?
+    @IBOutlet var visistDateLbl: UILabel?
+    @IBOutlet var latLongLbl: UILabel?
+    @IBOutlet var vw: UIView?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        vw?.layer.cornerRadius = 10.0
+        vw?.layer.masksToBounds = true
+        addButtonBorder()
+    }
+    
+    func addButtonBorder() {
+        vw?.dropShadow() 
+        
+    }
+}
+

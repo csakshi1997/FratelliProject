@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>manuale_bold.ttf</string>
+		<string>manuale_bold_italic.ttf</string>
+		<string>manuale_extra_bold.ttf</string>
+		<string>manuale_extra_bold_italic.ttf</string>
+		<string>manuale_italic.ttf</string>
+		<string>manuale_light.ttf</string>
+		<string>manuale_light_italic.ttf</string>
+		<string>manuale_medium.ttf</string>
+		<string>manuale_medium_italic.ttf</string>
+		<string>manuale_regular.ttf</string>
+		<string>manuale_semi_bold.ttf</string>
+		<string>manuale_semi_bold_italic.ttf</string>
+	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Would like to access your location for Check-In and Check-Out.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location even when the app is in the background.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app requires continuous location access.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIImageName</key>
+		<string>Launch Screen</string>
+	</dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+        <string>com.fratelli.syncLocations</string>
+    </array>
+</dict>
+</plist>
