@@ -933,7 +933,7 @@ class AdhocSalesOrderVw: UIViewController {
             Customer__Id: outletId,
             customerName: outlet?.name,
             Employee_Code__c: outlet?.salesmanCode,
-            Order_Booking_Data__c: CustomDateFormatter.getCurrentDate(),
+            Order_Booking_Data__c: getSelectedDate(),
             Distributor_Party_Code__c: outlet?.distributorPartyCode,
             Customer_Party_Code__c: outlet?.partyCode,
             Status__c: "Submitted",
@@ -947,6 +947,14 @@ class AdhocSalesOrderVw: UIViewController {
         )
         print(tableData)
         prepareSalesModelLineItemsData()
+    }
+    
+    func getSelectedDate() -> String {
+        guard let dateText = dateTxtFld?.text, !dateText.isEmpty else {
+            return CustomDateFormatter.getCurrentDate()
+        }
+
+        return dateText
     }
     
     func prepareSalesModelLineItemsData () {
